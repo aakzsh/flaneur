@@ -1,5 +1,6 @@
 import 'package:flaneur/constants/colors.dart';
 import 'package:flaneur/screens/dashboard.dart';
+import 'package:flaneur/screens/new.dart';
 import 'package:flaneur/screens/profile.dart';
 import 'package:flaneur/screens/quote.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Color accent = Color.fromRGBO(255, 100, 85, 1);
   int pageIndex = 1;
 
   final pages = [
@@ -36,62 +38,59 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  enableFeedback: false,
-                  onPressed: () {
-                    setState(() {
-                      pageIndex = 0;
-                    });
-                  },
-                  icon: pageIndex == 0
-                      ? const Icon(
-                          Icons.work_rounded,
-                          color: Colors.white,
-                          size: 35,
-                        )
-                      : const Icon(
-                          Icons.work_outline_outlined,
-                          color: Colors.white,
-                          size: 35,
-                        ),
-                ),
+                    enableFeedback: false,
+                    onPressed: () {
+                      setState(() {
+                        pageIndex = 0;
+                      });
+                    },
+                    icon: pageIndex == 0
+                        ? ImageIcon(
+                            AssetImage('assets/menu.png'),
+                            size: 20,
+                            color: accent,
+                          )
+                        : ImageIcon(
+                            AssetImage('assets/menu.png'),
+                            size: 20,
+                            color: Colors.white,
+                          )),
                 IconButton(
-                  enableFeedback: false,
-                  onPressed: () {
-                    setState(() {
-                      pageIndex = 1;
-                    });
-                  },
-                  icon: pageIndex == 1
-                      ? const Icon(
-                          Icons.widgets_rounded,
-                          color: Colors.white,
-                          size: 35,
-                        )
-                      : const Icon(
-                          Icons.widgets_outlined,
-                          color: Colors.white,
-                          size: 35,
-                        ),
-                ),
+                    enableFeedback: false,
+                    onPressed: () {
+                      setState(() {
+                        pageIndex = 1;
+                      });
+                    },
+                    icon: pageIndex == 1
+                        ? ImageIcon(
+                            AssetImage('assets/home.png'),
+                            size: 20,
+                            color: accent,
+                          )
+                        : ImageIcon(
+                            AssetImage('assets/home.png'),
+                            size: 20,
+                            color: Colors.white,
+                          )),
                 IconButton(
-                  enableFeedback: false,
-                  onPressed: () {
-                    setState(() {
-                      pageIndex = 2;
-                    });
-                  },
-                  icon: pageIndex == 2
-                      ? const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 35,
-                        )
-                      : const Icon(
-                          Icons.person_outline,
-                          color: Colors.white,
-                          size: 35,
-                        ),
-                ),
+                    enableFeedback: false,
+                    onPressed: () {
+                      setState(() {
+                        pageIndex = 2;
+                      });
+                    },
+                    icon: pageIndex == 2
+                        ? ImageIcon(
+                            AssetImage('assets/user.png'),
+                            size: 20,
+                            color: accent,
+                          )
+                        : ImageIcon(
+                            AssetImage('assets/user.png'),
+                            size: 20,
+                            color: Colors.white,
+                          )),
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:flaneur/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -11,6 +12,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors().bgclr,
       body: Center(child: Text("dashboard")),
     );
   }

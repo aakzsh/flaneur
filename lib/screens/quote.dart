@@ -23,9 +23,8 @@ class _QuoteState extends State<Quote> {
           height: 250,
           width: 250,
           decoration: BoxDecoration(
-              color: Colors.white,
-              image: DecorationImage(
-                  image: AssetImage('assets/aes.png'), fit: BoxFit.cover)),
+            color: Colors.white,
+          ),
           child: Padding(
             padding: EdgeInsets.only(
               left: 20,
@@ -34,7 +33,17 @@ class _QuoteState extends State<Quote> {
               bottom: 40,
             ),
             child: Container(
-              color: Colors.black,
+              child: Center(
+                child: Text(
+                  "some random quote here lmao jejehehhe ehehe whwh",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  image: DecorationImage(
+                      image: AssetImage('assets/aes.png'), fit: BoxFit.cover)),
             ),
           ),
         )),
