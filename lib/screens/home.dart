@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                       pageIndex = 0;
                     });
                   },
-                  icon: pageIndex == 1
+                  icon: pageIndex == 0
                       ? const Icon(
                           Icons.work_rounded,
                           color: Colors.white,
@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
                       pageIndex = 1;
                     });
                   },
-                  icon: pageIndex == 2
+                  icon: pageIndex == 1
                       ? const Icon(
                           Icons.widgets_rounded,
                           color: Colors.white,
@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
                       pageIndex = 2;
                     });
                   },
-                  icon: pageIndex == 3
+                  icon: pageIndex == 2
                       ? const Icon(
                           Icons.person,
                           color: Colors.white,

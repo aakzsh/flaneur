@@ -1,3 +1,4 @@
+import 'package:flaneur/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class Quote extends StatefulWidget {
@@ -10,9 +11,34 @@ class Quote extends StatefulWidget {
 class _QuoteState extends State<Quote> {
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.pink,
-      body: Center(child: Text("quotes")),
+      backgroundColor: AppColors().bgclr,
+      body: Center(
+          child: Container(
+        width: w - 60,
+        child: Center(
+            child: Container(
+          height: 250,
+          width: 250,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              image: DecorationImage(
+                  image: AssetImage('assets/aes.png'), fit: BoxFit.cover)),
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 20,
+              bottom: 40,
+            ),
+            child: Container(
+              color: Colors.black,
+            ),
+          ),
+        )),
+      )),
     );
   }
 }
