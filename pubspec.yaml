@@ -37,6 +37,7 @@ dependencies:
   localstore: ^1.2.3
   shared_preferences: ^2.0.15
   page_transition: ^2.0.7
+  http:
 
 dev_dependencies:
   flutter_test:

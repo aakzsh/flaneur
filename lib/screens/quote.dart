@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flaneur/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Quote extends StatefulWidget {
   const Quote({Key? key}) : super(key: key);
@@ -8,7 +11,32 @@ class Quote extends StatefulWidget {
   State<Quote> createState() => _QuoteState();
 }
 
+String showQ = "...";
+
 class _QuoteState extends State<Quote> {
+  @override
+  void initState() {
+    getQ();
+  }
+
+  getQ() {
+    String url = "https://api.quotable.io/random?tags=love";
+    final response = http.get(Uri.parse(url)).then((value) => {
+          setState(() {
+            print(value.body);
+            showQ = jsonDecode(value.body)['content'];
+          })
+        });
+
+    // var responseData = response.;
+    // return responseData;
+    // setState(() {
+    //   showQ = response;
+    // });
+  }
+
+  //  http.get(Uri.parse('https://api.quotable.io/random?tags=aesthetic'));
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -38,16 +66,19 @@ class _QuoteState extends State<Quote> {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 30.0, bottom: 20),
-                  child: Text(
-                    "get ready to be inspired",
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.black),
-                  ),
-                ),
+                    padding: const EdgeInsets.only(left: 30.0, bottom: 30),
+                    child: Container(
+                      width: 0.6 * w,
+                      child: Text(
+                        showQ,
+                        softWrap: true,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black),
+                      ),
+                    )),
               ],
             )
           ],
