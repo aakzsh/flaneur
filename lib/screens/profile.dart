@@ -1,6 +1,8 @@
 import 'package:flaneur/constants/colors.dart';
 import 'package:flutter/material.dart';
 
+import 'package:localstore/localstore.dart';
+
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -9,6 +11,34 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final db = Localstore.instance;
+
+  int _longestStreak = -1;
+  int _ongoingStreak = 1;
+  bool _isStreakOngoing = false;
+  int _taskCounter = -1;
+
+  @override
+  void initState() {
+    db.collection('data').doc("base").get().then((value) {
+      print("===================");
+      print(value?['isStreakOngoing']);
+      setState(() {
+        _ongoingStreak = value?['ongoingStreak'];
+        _longestStreak = value?['longestStreak'];
+        _isStreakOngoing = value?['isStreakOngoing'];
+        _taskCounter = value?['taskCounter'];
+      });
+      // value?.keys.forEach((element) {
+      //   print(value[element]);
+
+      //   setState(() {
+
+      //   });
+      // });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +82,7 @@ class _ProfileState extends State<Profile> {
                     height: 5,
                   ),
                   Text(
-                    "18 days",
+                    "$_ongoingStreak days",
                     style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.w500,
@@ -71,14 +101,14 @@ class _ProfileState extends State<Profile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Completion",
+                      "Total Tasks",
                       style: TextStyle(fontSize: 20),
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Text(
-                      "75%",
+                      "$_taskCounter",
                       style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.w500,
@@ -102,7 +132,7 @@ class _ProfileState extends State<Profile> {
                       height: 15,
                     ),
                     Text(
-                      "38 days",
+                      "$_longestStreak days",
                       style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.w500,
