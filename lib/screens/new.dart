@@ -17,7 +17,10 @@ class _NewState extends State<New> {
     Future.delayed(const Duration(milliseconds: 4000), () {
       Navigator.pushAndRemoveUntil(
           context,
-          PageTransition(type: PageTransitionType.fade, child: Home()),
+          PageTransition(
+              type: PageTransitionType.fade,
+              child: Home(),
+              duration: Duration(seconds: 2)),
           (route) => false);
     });
   }
@@ -69,7 +72,8 @@ class _NewState extends State<New> {
                 bottom: bottom,
               ),
 
-              Column(
+              SingleChildScrollView(
+                  child: Column(
                 children: <Widget>[
                   Center(
                       child: InkWell(
@@ -83,50 +87,54 @@ class _NewState extends State<New> {
                       // setState(() => bottom = 450);
                       showDialog(
                           context: context,
-                          builder: (context) => AlertDialog(
-                                backgroundColor: AppColors().secondary,
-                                content: Container(
-                                  height: 300,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      InkWell(
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Image.asset(
-                                            'assets/close.png',
-                                            height: 40,
+                          builder: (context) => Container(
+                              height: 400,
+                              child: AlertDialog(
+                                  scrollable: true,
+                                  backgroundColor: AppColors().secondary,
+                                  content: SingleChildScrollView(
+                                    child: Container(
+                                      height: 300,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: <Widget>[
+                                          InkWell(
+                                            child: Align(
+                                              alignment: Alignment.centerRight,
+                                              child: Image.asset(
+                                                'assets/close.png',
+                                                height: 40,
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              Navigator.pop(context);
+                                            },
                                           ),
-                                        ),
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
+                                          TextFormField(
+                                            onChanged: (text) {
+                                              texty = text;
+                                            },
+                                            // maxLines: 5,
+                                            decoration: InputDecoration(
+                                                hintText:
+                                                    "Enter your daily task..."),
+                                          ),
+                                          MaterialButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                bottom = 450;
+                                              });
+                                              lol();
+                                              Navigator.pop(context);
+                                            },
+                                            color: AppColors().accent,
+                                            child: Text("Submit"),
+                                          )
+                                        ],
                                       ),
-                                      TextFormField(
-                                        onChanged: (text) {
-                                          texty = text;
-                                        },
-                                        // maxLines: 5,
-                                        decoration: InputDecoration(
-                                            hintText:
-                                                "Enter your daily task..."),
-                                      ),
-                                      MaterialButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            bottom = 450;
-                                          });
-                                          lol();
-                                          Navigator.pop(context);
-                                        },
-                                        color: AppColors().accent,
-                                        child: Text("Submit"),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ));
+                                    ),
+                                  ))));
                     },
                   )),
                   SizedBox(
@@ -137,7 +145,7 @@ class _NewState extends State<New> {
                     style: TextStyle(fontSize: 20),
                   )
                 ],
-              )
+              ))
             ],
           )
         ],

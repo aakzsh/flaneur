@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flaneur/constants/colors.dart';
 import 'package:flaneur/screens/new.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +73,18 @@ class _DashboardState extends State<Dashboard> {
               Wrap(
                 spacing: 8.0, // gap between adjacent chips
                 runSpacing: 4.0,
-                children: <Widget>[polaroid(w), polaroid(w)],
+                children: <Widget>[
+                  polaroid(
+                    w,
+                    "hehe",
+                    Color(colors[Random().nextInt(5)]),
+                  ),
+                  polaroid(
+                    w,
+                    "hehe",
+                    Color(colors[Random().nextInt(5)]),
+                  )
+                ],
               )
             ],
           ),
@@ -80,11 +93,12 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  polaroid(w) {
+  bool checked = false;
+  Widget polaroid(w, txt, clr) {
     return Container(
       height: 270,
       width: 0.45 * w,
-      color: Color(colors[0]),
+      color: clr,
       child: Column(
         children: [
           Padding(
@@ -94,7 +108,7 @@ class _DashboardState extends State<Dashboard> {
               width: 0.35 * w,
               color: Colors.white,
               child: Center(
-                child: Text("gotta clean",
+                child: Text("$txt",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontStyle: FontStyle.italic, color: Colors.black)),
@@ -117,10 +131,10 @@ class _DashboardState extends State<Dashboard> {
                   color: Colors.black, //your desire colour here
                   width: 1.5,
                 ),
-                value: checkedValue,
+                value: checked,
                 onChanged: (newValue) {
                   setState(() {
-                    checkedValue = newValue!;
+                    checked = newValue!;
                   });
                 },
               )
