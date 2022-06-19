@@ -17,36 +17,41 @@ class _QuoteState extends State<Quote> {
       backgroundColor: AppColors().bgclr,
       body: Center(
           child: Container(
-        width: w - 60,
-        child: Center(
-            child: Container(
-          height: 250,
-          width: 250,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: 20,
-              right: 20,
-              top: 20,
-              bottom: 40,
-            ),
-            child: Container(
-              child: Center(
-                child: Text(
-                  "some random quote here lmao jejehehhe ehehe whwh",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontStyle: FontStyle.italic),
-                ),
+        height: 270,
+        width: 0.75 * w,
+        color: Colors.white,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Container(
+                height: 150,
+                width: 0.60 * w,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage('assets/aes.png'),
+                        fit: BoxFit.cover)),
+                child: Center(),
               ),
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  image: DecorationImage(
-                      image: AssetImage('assets/aes.png'), fit: BoxFit.cover)),
             ),
-          ),
-        )),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 30.0, bottom: 20),
+                  child: Text(
+                    "get ready to be inspired",
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       )),
     );
   }

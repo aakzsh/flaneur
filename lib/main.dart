@@ -41,6 +41,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       title: "Flaneur: feel accomplished",
       home: Home(),
