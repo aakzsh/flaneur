@@ -68,7 +68,11 @@ class _DashboardState extends State<Dashboard> {
               SizedBox(
                 height: 20,
               ),
-              polaroid(w)
+              Wrap(
+                spacing: 8.0, // gap between adjacent chips
+                runSpacing: 4.0,
+                children: <Widget>[polaroid(w), polaroid(w)],
+              )
             ],
           ),
         )),
