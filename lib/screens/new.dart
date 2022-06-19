@@ -9,10 +9,11 @@ class New extends StatefulWidget {
 }
 
 class _NewState extends State<New> {
-  double height = 100;
+  double bottom = 300;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors().bgclr,
       body: Column(
@@ -20,12 +21,31 @@ class _NewState extends State<New> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Stack(
+            alignment: Alignment.center,
             children: <Widget>[
-              AnimatedContainer(
-                duration: Duration(seconds: 3),
-                height: height,
-                child: Container(height: 0, width: 200, color: Colors.blue),
+              // SlideTransition(
+              //   position: _animation,
+              //   child: Container(height: 0, width: 200, color: Colors.blue),
+              // ),
+              Container(
+                height: h - 100,
+                // color: Colors.yellow,
               ),
+              AnimatedPositioned(
+                child: Container(
+                  height: 200,
+                  width: 150,
+                  color: AppColors().polclr[2],
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: 20, left: 20, right: 20, bottom: 40),
+                    child: Container(color: Colors.white),
+                  ),
+                ),
+                duration: Duration(seconds: 1),
+                bottom: bottom,
+              ),
+
               Column(
                 children: <Widget>[
                   Center(
@@ -35,7 +55,11 @@ class _NewState extends State<New> {
                       width: w - 60,
                     ),
                     onTap: () {
-                      setState(() => height = 200);
+                      // setState(() => bottom = 450);
+                      showDialog(
+                          context: context,
+                          builder: (context) =>
+                              AlertDialog(title: Text("lmao")));
                     },
                   )),
                   SizedBox(
